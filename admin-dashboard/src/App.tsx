@@ -94,17 +94,17 @@ function App() {
     // Login Screen
     if (!isAuthenticated) {
         return (
-            <div className="min-h-screen bg-background flex items-center justify-center p-4 relative">
+            <div className="min-h-[100dvh] bg-background flex items-center justify-center p-4 relative overflow-y-auto">
                 {/* Error Toast at Top */}
                 {loginError && (
-                    <div className="absolute top-4 left-4 right-4 flex justify-center animate-fade-in">
-                        <div className="px-4 py-2 rounded-full bg-destructive/20 border border-destructive/30 text-destructive text-sm">
+                    <div className="fixed top-4 left-4 right-4 flex justify-center animate-fade-in z-50">
+                        <div className="px-4 py-2 rounded-full bg-destructive/20 border border-destructive/30 text-destructive text-sm shadow-lg backdrop-blur-md">
                             {loginError}
                         </div>
                     </div>
                 )}
 
-                <div className="w-full max-w-sm">
+                <div className="w-full max-w-sm my-auto py-8">
                     {/* Logo */}
                     <div className="text-center mb-8">
                         <div className="w-20 h-20 rounded-2xl bg-primary/20 flex items-center justify-center mx-auto mb-4">
