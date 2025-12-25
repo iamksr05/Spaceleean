@@ -64,6 +64,17 @@ app.post('/api/contact', async (req, res) => {
     }
 });
 
+// Get all contacts
+app.get('/api/contacts', async (req, res) => {
+    try {
+        const contacts = await Contact.find().sort({ createdAt: -1 });
+        res.json(contacts);
+    } catch (error) {
+        console.error('Error fetching contacts:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
 app.get('/', (req, res) => {
     res.send('API is running...');
 });
