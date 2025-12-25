@@ -14,6 +14,7 @@ import {
     EyeOff,
     LogOut,
 } from "lucide-react";
+import { ReloadPrompt } from "./ReloadPrompt";
 
 interface Contact {
     _id: string;
@@ -371,6 +372,8 @@ function App() {
                     </div>
                 </div>
             )}
+
+            <ReloadPrompt />
         </div>
     );
 }
