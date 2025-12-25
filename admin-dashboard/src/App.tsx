@@ -15,6 +15,7 @@ import {
     LogOut,
 } from "lucide-react";
 import { ReloadPrompt } from "./ReloadPrompt";
+import { InstallPrompt } from "./InstallPrompt";
 
 interface Contact {
     _id: string;
@@ -164,6 +165,7 @@ function App() {
                         Protected admin area
                     </p>
                 </div>
+                <InstallPrompt />
             </div>
         );
     }
@@ -374,6 +376,7 @@ function App() {
             )}
 
             <ReloadPrompt />
+            <InstallPrompt />
         </div>
     );
 }
