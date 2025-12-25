@@ -7,18 +7,23 @@ export function InstallPrompt() {
 
     useEffect(() => {
         const handler = (e: any) => {
-            // Prevent the mini-infobar from appearing on mobile
             e.preventDefault();
-            // Stash the event so it can be triggered later.
             setDeferredPrompt(e);
-            // Update UI notify the user they can install the PWA
             setShowInstall(true);
         };
 
+        const installHandler = () => {
+            setShowInstall(false);
+            setDeferredPrompt(null);
+            console.log('App installed successfully');
+        };
+
         window.addEventListener("beforeinstallprompt", handler);
+        window.addEventListener("appinstalled", installHandler);
 
         return () => {
             window.removeEventListener("beforeinstallprompt", handler);
+            window.removeEventListener("appinstalled", installHandler);
         };
     }, []);
 
@@ -26,15 +31,16 @@ export function InstallPrompt() {
         if (!deferredPrompt) {
             return;
         }
-        // Show the install prompt
-        deferredPrompt.prompt();
-        // Wait for the user to respond to the prompt
-        const { outcome } = await deferredPrompt.userChoice;
-        // Optionally, send analytics event with outcome of user choice
-        console.log(`User response to the install prompt: ${outcome}`);
-        // We've used the prompt, and can't use it again, throw it away
-        setDeferredPrompt(null);
+        // Hide our UI immediately so it doesn't conflict with browser dialog
         setShowInstall(false);
+
+        // Show the native browser prompt
+        deferredPrompt.prompt();
+
+        const { outcome } = await deferredPrompt.userChoice;
+        console.log(`User response to the install prompt: ${outcome}`);
+
+        setDeferredPrompt(null);
     };
 
     if (!showInstall) {
