@@ -27,8 +27,6 @@ interface Contact {
 }
 
 const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:3333";
-const ADMIN_PASSWORD = import.meta.env.ADMIN_PASS;
-console.log("Loaded Env Password:", ADMIN_PASSWORD); // Debugging line
 
 function App() {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -40,30 +38,46 @@ function App() {
     const [error, setError] = useState<string | null>(null);
     const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
 
-    // Check if already authenticated (session storage)
+    // Load session
     useEffect(() => {
-        const auth = sessionStorage.getItem("admin_authenticated");
-        if (auth === "true") {
+        const sessionAuth = sessionStorage.getItem("adminAuth");
+        if (sessionAuth === "true") {
             setIsAuthenticated(true);
         }
     }, []);
 
-    const handleLogin = (e: React.FormEvent) => {
+    const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (password === ADMIN_PASSWORD) {
-            setIsAuthenticated(true);
-            sessionStorage.setItem("admin_authenticated", "true");
-            setLoginError("");
-        } else {
-            setLoginError("Incorrect password");
-            setPassword("");
+        setLoginError("");
+
+        try {
+            const response = await fetch(`${API_URL}/api/login`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ password })
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                setIsAuthenticated(true);
+                sessionStorage.setItem("adminAuth", "true");
+                setLoginError("");
+            } else {
+                setLoginError("Incorrect password");
+                const input = document.querySelector('input[type="password"]') as HTMLInputElement;
+                input?.focus();
+            }
+        } catch (err) {
+            setLoginError("Connection error");
+            console.error(err);
         }
     };
 
     const handleLogout = () => {
         setIsAuthenticated(false);
         setPassword("");
-        sessionStorage.removeItem("admin_authenticated");
+        sessionStorage.removeItem("adminAuth");
     };
 
     const fetchContacts = async () => {

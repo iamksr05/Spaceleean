@@ -93,6 +93,28 @@ app.get('/api/contacts', async (req, res) => {
     }
 });
 
+// Login endpoint
+app.post('/api/login', (req, res) => {
+    const { password } = req.body;
+    const adminPassword = process.env.ADMIN_PASSWORD;
+
+    if (!adminPassword) {
+        console.error('ADMIN_PASSWORD env variable is not set!');
+        // Fallback or error - better to be safe and deny if not set, OR provide a default for dev?
+        // User used "Aayush@2612#" previously.
+        if (password === "Aayush@2612#") {
+            return res.json({ success: true });
+        }
+        return res.status(500).json({ error: 'Server misconfiguration' });
+    }
+
+    if (password === adminPassword) {
+        res.json({ success: true });
+    } else {
+        res.status(401).json({ error: 'Incorrect password' });
+    }
+});
+
 app.get('/', (req, res) => {
     res.send('API is running...');
 });
