@@ -1,6 +1,6 @@
-# SPACELEEAN - Space Propulsion Engineering
+# SPACELEEAN
 
-**Official platform for SPACELEEAN's advanced propulsion technologies.**
+**Official platform for SPACELEEAN's advanced space propulsion technologies.**
 
 ---
 
@@ -14,55 +14,17 @@ This software is the confidential and proprietary information of SPACELEEAN. It 
 
 ---
 
-## Project Overview
+## About The Project
 
-This repository contains the full stack application for the SPACELEEAN platform, including:
-- **Main Website**: A high-performance marketing and informational site.
-- **Admin Dashboard**: A secure internal PWA for managing contact inquiries and operations.
-- **Backend API**: A Node.js/Express service handling data persistence and business logic.
+SPACELEEAN is a cutting-edge aerospace initiative focused on developing next-generation propulsion systems for deep space exploration. This repository hosts the digital infrastructure powering the SPACELEEAN mission.
 
-## Internal Development Guide
+### System Components
 
-### Prerequisites
-- Node.js 18+ 
-- MongoDB (Atlas or Local)
+1.  **Main Platform**: A high-performance, responsive web interface showcasing SPACELEEAN's mission, technology, and engineering breakthroughs. It serves as the primary public communication channel.
 
-### Setup
+2.  **Admin Command Center**: A secure, mobile-first Progressive Web App (PWA) designed for authorized personnel. It facilitates real-time management of communications, inquiries, and operational data.
 
-```bash
-# Install dependencies
-npm install
-
-# Setup Environment
-# Create .env in root and .env in admin-dashboard/
-```
-
-### Running the Application
-
-1. **Backend Server**:
-   ```bash
-   npm run server
-   # Runs on http://localhost:3333
-   ```
-
-2. **Main Website**:
-   ```bash
-   npm run dev
-   # Runs on http://localhost:8080
-   ```
-
-3. **Admin Dashboard**:
-   ```bash
-   cd admin-dashboard
-   npm run dev
-   # Runs on http://localhost:3000
-   ```
-
-## Deployment
-
-- **Frontend**: Hosted on Vercel.
-- **Backend**: Hosted on Render.
-- **Database**: MongoDB Atlas.
+3.  **Backend Core**: A robust, scalable API service managing data persistence and business logic, ensuring secure and reliable operations across all platforms.
 
 ---
-*For internal team access only. Contact the project administrator for credentials.*
+*For official inquiries, please contact the SPACELEEAN administration.*
