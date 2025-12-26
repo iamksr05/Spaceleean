@@ -1,59 +1,68 @@
-# S.P.E.E.D. - Space Propulsion Engineering
+# SPACELEEAN - Space Propulsion Engineering
 
-Advanced space propulsion technology website built with React, TypeScript, and Vite.
+**Official platform for SPACELEEAN's advanced propulsion technologies.**
 
-## Tech Stack
+---
 
-- **Frontend**: React 18, TypeScript, Vite
-- **Styling**: Tailwind CSS, shadcn/ui
-- **Backend**: Express.js, MongoDB
-- **State Management**: TanStack Query
+## ⚠️ Proprietary Notice
 
-## Getting Started
+**Copyright © 2025 SPACELEEAN. All Rights Reserved.**
+
+This software is the confidential and proprietary information of SPACELEEAN. It is intended solely for the internal use and operation of SPACELEEAN projects.
+
+**Unauthorized copying, distribution, modification, public display, or use of this source code, via any medium, is strictly prohibited.** This project is NOT open source.
+
+---
+
+## Project Overview
+
+This repository contains the full stack application for the SPACELEEAN platform, including:
+- **Main Website**: A high-performance marketing and informational site.
+- **Admin Dashboard**: A secure internal PWA for managing contact inquiries and operations.
+- **Backend API**: A Node.js/Express service handling data persistence and business logic.
+
+## Internal Development Guide
 
 ### Prerequisites
-
 - Node.js 18+ 
-- npm or yarn
-- MongoDB (local or Atlas)
+- MongoDB (Atlas or Local)
 
-### Installation
+### Setup
 
 ```bash
 # Install dependencies
 npm install
 
-# Create .env file with your MongoDB connection string
-# MONGODB_URI=your_mongodb_connection_string
-# PORT=3333
+# Setup Environment
+# Create .env in root and .env in admin-dashboard/
 ```
 
-### Development
+### Running the Application
 
-```bash
-# Start the frontend development server
-npm run dev
+1. **Backend Server**:
+   ```bash
+   npm run server
+   # Runs on http://localhost:3333
+   ```
 
-# Start the backend server (in a separate terminal)
-npm run server
-```
+2. **Main Website**:
+   ```bash
+   npm run dev
+   # Runs on http://localhost:8080
+   ```
 
-The frontend will be available at `http://localhost:8080`
-The backend API will be available at `http://localhost:3333`
+3. **Admin Dashboard**:
+   ```bash
+   cd admin-dashboard
+   npm run dev
+   # Runs on http://localhost:3000
+   ```
 
-## Project Structure
+## Deployment
 
-```
-├── src/
-│   ├── components/     # React components
-│   ├── pages/          # Page components
-│   ├── hooks/          # Custom React hooks
-│   └── lib/            # Utility functions
-├── server/
-│   └── index.ts        # Express backend server
-└── public/             # Static assets
-```
+- **Frontend**: Hosted on Vercel.
+- **Backend**: Hosted on Render.
+- **Database**: MongoDB Atlas.
 
-## License
-
-MIT
+---
+*For internal team access only. Contact the project administrator for credentials.*
