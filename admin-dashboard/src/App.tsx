@@ -27,7 +27,8 @@ interface Contact {
 }
 
 const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:3333";
-const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || "Aayush@2612#";
+const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD;
+console.log("Loaded Env Password:", ADMIN_PASSWORD); // Debugging line
 
 function App() {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
